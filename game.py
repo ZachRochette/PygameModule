@@ -111,7 +111,6 @@ def pipe_score_check():
                 can_score = True
 
 
-#pygame.mixer.pre_init(frequency = 44100, size = 16, channels = 2, buffer = 1024)
 pygame.init()
 screen = pygame.display.set_mode((576, 1024))
 clock = pygame.time.Clock()
