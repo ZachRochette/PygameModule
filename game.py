@@ -3,10 +3,14 @@ from pygame.locals import *
 import sys
 import random
 
+# Create the floor
+
 
 def draw_floor():
     screen.blit(floor_surface, (floor_x_pos, 900))
     screen.blit(floor_surface, (floor_x_pos + 576, 900))
+
+# Create how the pipes show up randomly
 
 
 def create_pipe():
@@ -15,12 +19,16 @@ def create_pipe():
     top_pipe = pipe_surface.get_rect(midbottom=(700, random_pipe_pos - 300))
     return bottom_pipe, top_pipe
 
+# Set the loading area for the pipe view
+
 
 def move_pipes(pipes):
     for pipe in pipes:
         pipe.centerx -= 5
     visible_pipes = [pipe for pipe in pipes if pipe.right > -50]
     return visible_pipes
+
+# Make the pipes come from the top and bottom of the screen
 
 
 def draw_pipes(pipes):
@@ -30,6 +38,8 @@ def draw_pipes(pipes):
         else:
             flip_pipe = pygame.transform.flip(pipe_surface, False, True)
             screen.blit(flip_pipe, pipe)
+
+# Make sure you die if you touch a pipe
 
 
 def check_collision(pipes):
@@ -46,6 +56,8 @@ def check_collision(pipes):
 
     return True
 
+# Bird animation and rotation
+
 
 def rotate_bird(bird):
     new_bird = pygame.transform.rotozoom(bird, -bird_movement * 3, 1)
@@ -56,6 +68,8 @@ def bird_animation():
     new_bird = bird_frames[bird_index]
     new_bird_rect = new_bird.get_rect(center=(100, bird_rect.centery))
     return new_bird, new_bird_rect
+
+# Display the score on the screen in white text color
 
 
 def score_display(game_state):
@@ -74,6 +88,8 @@ def score_display(game_state):
             f'High score: {int(high_score)}', True, (255, 255, 255))
         high_score_rect = high_score_surface.get_rect(center=(288, 850))
         screen.blit(high_score_surface, high_score_rect)
+
+# Update the high score
 
 
 def update_score(score, high_score):
@@ -108,7 +124,7 @@ game_active = True
 score = 0
 high_score = 0
 can_score = True
-bg_surface = pygame.image.load('assets/background-day.png').convert()
+bg_surface = pygame.image.load('assets/background-city.png').convert()
 bg_surface = pygame.transform.scale2x(bg_surface)
 
 floor_surface = pygame.image.load('assets/base.png').convert()
@@ -129,11 +145,7 @@ bird_rect = bird_surface.get_rect(center=(100, 512))
 BIRDFLAP = pygame.USEREVENT + 1
 pygame.time.set_timer(BIRDFLAP, 200)
 
-# bird_surface = pygame.image.load('assets/bluebird-midflap.png').convert_alpha()
-# bird_surface = pygame.transform.scale2x(bird_surface)
-# bird_rect = bird_surface.get_rect(center = (100,512))
-
-pipe_surface = pygame.image.load('assets/pipe-green.png')
+pipe_surface = pygame.image.load('assets/pipe-purple.png')
 pipe_surface = pygame.transform.scale2x(pipe_surface)
 pipe_list = []
 SPAWNPIPE = pygame.USEREVENT
@@ -151,6 +163,7 @@ score_sound_countdown = 100
 SCOREEVENT = pygame.USEREVENT + 2
 pygame.time.set_timer(SCOREEVENT, 100)
 
+# Run the game
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
