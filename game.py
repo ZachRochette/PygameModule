@@ -163,7 +163,7 @@ score_sound_countdown = 100
 SCOREEVENT = pygame.USEREVENT + 2
 pygame.time.set_timer(SCOREEVENT, 100)
 
-# Run the game
+# Run the game and bird movement
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -172,7 +172,7 @@ while True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE and game_active:
                 bird_movement = 0
-                bird_movement -= 12
+                bird_movement -= 8
                 flap_sound.play()
             if event.key == pygame.K_SPACE and game_active == False:
                 game_active = True
