@@ -4,7 +4,7 @@ In this module I will be creating a Flappy Bird Clone using Pygame. I am interes
 
 The purpose of doing all of this was mentioned above but to elaborate I am doing this out of curiousity to get the fundamentals of game creation down and out of enjoyment, so that I can play this game again.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=RyhbSrhYLUE&list=PLD1izAfmJ9qBFbf6uvDDWG5Qr_E_zug01&index=23)
 
 # Development Environment
 
